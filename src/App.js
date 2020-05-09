@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import icon from './resouces/images/icon.png';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          This is for comment
       </header>
+      <div className='App-body'>
+        <div className='comment_container'>
+          <div className='contents'>
+            <div>
+              <img src={icon} alt='icon' />
+            </div>
+            <div className='name'>이름</div>
+            <div className='comment'>코멘트</div>
+          </div>
+          <div className='additional_info'>
+            <div className='like'>좋아요</div>
+            <div className='num_like'>갯수</div>
+            <div className='reg_time'>몇분전</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
