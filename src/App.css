@@ -34,7 +34,7 @@
 .comment_container .icon {
   display: flex;
   align-items: center;
-  margin: 5px;
+  margin-right: 6px;
 }
 
 .comment_container .icon img {
