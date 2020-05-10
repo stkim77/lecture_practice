@@ -15,7 +15,7 @@
 
 .App-body {
   padding: 10px;
-  background-color: #e0dbce;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,24 +23,56 @@
 }
 
 .comment_container {
-  font-size: calc(10px + 1vmin);
+  display: flex;
+  align-items: flex-start;
+  padding: 4px 12px;
+  width: 500px;
   color: rgb(0, 0, 0);
   border: 1px solid;
 }
 
-.comment_container .contents {
+.comment_container .icon {
   display: flex;
   align-items: center;
+  margin: 5px;
 }
 
-.comment_container .contents img {
+.comment_container .icon img {
   width: 30px;
 }
 
-.comment_container .contents .name {
-  margin: 0 10px;
+.comment_container .contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comment_container .main_info {
+  display: flex;
+  padding: 8px 10px;
+  background-color: #f2f3f5;
+  border-radius: 18px;
+  font-size: calc(7px + 1vmin);
+}
+
+.comment_container .contents .main_info .name {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #385898;
+}
+
+.comment_container .contents .main_info .comment {
+  color: #1c1e21;
 }
 
 .comment_container .additional_info {
   display: flex;
+  font-size: calc(5px + 1vmin);
+  color: #385898;
+  margin-left: 10px;
+  padding-top: 3px;
+}
+
+.comment_container .additional_info .reg_time {
+  color: #606770;
 }
