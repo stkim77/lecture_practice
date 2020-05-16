@@ -32,7 +32,7 @@ class Comment extends React.Component {
             <div className='comment'>{comment}</div>
           </div>
           <div className='additional_info'>
-            <div className='like'>좋아요</div>
+            <a href="#">좋아요</a>
             <span>&nbsp;·&nbsp;</span>
             <div className='num_like'>{countOfLike}개</div>
             <span>&nbsp;·&nbsp;</span>

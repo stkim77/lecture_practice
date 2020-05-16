@@ -73,6 +73,12 @@
   padding-top: 3px;
 }
 
+.comment_container .additional_info a {
+  color: #385898;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .comment_container .additional_info .reg_time {
   color: #606770;
 }

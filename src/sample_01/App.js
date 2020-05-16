@@ -19,7 +19,7 @@ function App() {
               <div className='comment'>테스트 코멘트</div>
             </div>
             <div className='additional_info'>
-              <div className='like'>좋아요</div>
+              <a href="#">좋아요</a>
               <span>&nbsp;·&nbsp;</span>
               <div className='num_like'>2개</div>
               <span>&nbsp;·&nbsp;</span>

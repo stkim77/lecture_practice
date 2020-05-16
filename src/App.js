@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import icon from './resouces/images/icon.png';
 import './App.css';
 
@@ -19,19 +19,19 @@ const getDateDiffFromNow = (from) => {
 }
 
 function Comment(props) {
+  const [isLike, setLike] = useState(false);
+
   const {name, comment, countOfLike, createdAt} = props.commentData;
   return (
     <div className='comment_container'>
-      <div className='icon'>
-        <img src={icon} alt='icon' />
-      </div>
+      {props.children}
       <div className='contents'>
         <div className='main_info'>
           <div className='name'>{name}</div>
           <div className='comment'>{comment}</div>
         </div>
         <div className='additional_info'>
-          <div className='like'>좋아요</div>
+          <a href="#" className='like'>좋아요</a>
           <span>&nbsp;·&nbsp;</span>
           <div className='num_like'>{countOfLike}개</div>
           <span>&nbsp;·&nbsp;</span>
@@ -49,7 +49,11 @@ function App() {
           This is for comment
       </header>
       <div className='App-body'>
-        <Comment commentData={commentData}/>
+        <Comment commentData={commentData}>
+          <div className='icon'>
+            <img src={icon} alt='icon' />
+          </div>
+        </Comment>
       </div>
     </div>
   );

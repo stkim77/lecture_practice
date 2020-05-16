@@ -18,32 +18,42 @@ const getDateDiffFromNow = (from) => {
   return diffMinute;
 }
 
+class Comment extends React.Component {
+  render() {
+    const {name, comment, countOfLike, createdAt} = this.props.commentData;
+    return (
+      <div className='comment_container'>
+        {this.props.children}
+        <div className='contents'>
+          <div className='main_info'>
+            <div className='name'>{name}</div>
+            <div className='comment'>{comment}</div>
+          </div>
+          <div className='additional_info'>
+            <a href="#">좋아요</a>
+            <span>&nbsp;·&nbsp;</span>
+            <div className='num_like'>{countOfLike}개</div>
+            <span>&nbsp;·&nbsp;</span>
+            <div className='reg_time'>{getDateDiffFromNow(createdAt)}분전</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 function App() {
-  const {name, comment, countOfLike, createdAt} = commentData;
   return (
     <div className="App">
       <header className="App-header">
           This is for comment
       </header>
       <div className='App-body'>
-        <div className='comment_container'>
+        <Comment commentData={commentData}>
           <div className='icon'>
             <img src={icon} alt='icon' />
           </div>
-          <div className='contents'>
-            <div className='main_info'>
-              <div className='name'>{name}</div>
-              <div className='comment'>{comment}</div>
-            </div>
-            <div className='additional_info'>
-              <a href="#">좋아요</a>
-              <span>&nbsp;·&nbsp;</span>
-              <div className='num_like'>{countOfLike}개</div>
-              <span>&nbsp;·&nbsp;</span>
-              <div className='reg_time'>{getDateDiffFromNow(createdAt)}분전</div>
-            </div>
-          </div>
-        </div>
+        </Comment>
       </div>
     </div>
   );
