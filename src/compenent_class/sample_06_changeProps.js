@@ -2,13 +2,6 @@ import React from 'react';
 import icon from './resouces/images/icon.png';
 import './App.css';
 
-const commentData = {
-  name : '로건',
-  comment : '테스트 코멘트',
-  countOfLike : 5,
-  createdAt : '2020-05-16T17:40:00'
-};
-
 const getDateDiffFromNow = (from) => {
   const fromDate = new Date(from);
   const nowDate = new Date();

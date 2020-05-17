@@ -42,8 +42,7 @@ class Comment extends React.Component {
 
   handleLikeClick(e) {
     e.preventDefault();
-    const {id} = this.props.commentData;
-    this.props.changeCountOfLike(id);
+    this.props.changeCountOfLike();
   }
 
   render() {
@@ -75,52 +74,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      commentData : [
-        {
-          id : 1,
-          name : '로건1',
-          comment : '테스트 코멘트1111',
-          isLike : false,
-          countOfLike : 3,
-          createdAt : '2020-05-17T18:10:00'    
-        },
-        {
-          id : 2,
-          name : '로건2',
-          comment : '테스트 코멘트2222',
-          isLike : false,
-          countOfLike : 4,
-          createdAt : '2020-05-17T18:15:00'    
-        },
-        {
-          id : 3,
-          name : '로건3',
-          comment : '테스트 코멘트3333',
-          isLike : false,
-          countOfLike : 5,
-          createdAt : '2020-05-17T18:20:00'    
-        },
-      ]
+      commentData : {
+        name : '로건',
+        comment : '테스트 코멘트',
+        isLike : false,
+        countOfLike : 5,
+        createdAt : '2020-05-17T18:00:00'    
+      }
     };
     this.changeCountOfLike = this.changeCountOfLike.bind(this);
   }
 
-  changeCountOfLike(paramId) {
+  changeCountOfLike() {
     this.setState((state)=>{
       const {commentData} = state;
-      const index = commentData.findIndex(({id})=>(id===paramId));
-      const selectComment = commentData[index];
-  
       return {
-        commentData : [
-          ...commentData.slice(0, index),
-          {
-            ...selectComment,
-            isLike: !selectComment.isLike,
-            countOfLike: !selectComment.isLike ? selectComment.countOfLike+1 : selectComment.countOfLike-1
-          },
-          ...commentData.slice(index+1)    
-        ]
+        commentData : {
+          ...commentData,
+          isLike: !commentData.isLike,
+          countOfLike: !commentData.isLike ? commentData.countOfLike+1 : commentData.countOfLike-1
+        }
       }
     });
   }
@@ -133,17 +106,11 @@ class App extends React.Component {
             This is for comment
         </header>
         <div className='App-body'>
-          {
-            commentData.map((data)=>{
-              return (
-                <Comment key={data.id} commentData={data} changeCountOfLike={this.changeCountOfLike}>
-                  <div className='icon'>
-                    <img src={icon} alt='icon' />
-                  </div>
-                </Comment>    
-              );
-            })
-          }
+          <Comment commentData={commentData} changeCountOfLike={this.changeCountOfLike}>
+            <div className='icon'>
+              <img src={icon} alt='icon' />
+            </div>
+          </Comment>
         </div>
       </div>
     );
