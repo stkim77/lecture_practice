@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import icon from './resouces/images/icon.png';
 import './App.css';
 
+const commentData = {
+  name : '로건',
+  comment : '테스트 코멘트',
+  countOfLike : 5,
+  createdAt : '2020-05-16T17:40:00'
+};
+
 const getDateDiffFromNow = (from) => {
   const fromDate = new Date(from);
   const nowDate = new Date();
@@ -12,11 +19,11 @@ const getDateDiffFromNow = (from) => {
 }
 
 function Comment(props) {
-  // const [isLike, setLike] = useState(false);
-  const {name, comment, isLike, countOfLike, createdAt} = props.commentData;
+  const [isLike, setLike] = useState(false);
+  const {name, comment, countOfLike, createdAt} = props.commentData;
   function handleLikeClick(e) {
     e.preventDefault();
-    props.changeCountOfLike();
+    setLike(!isLike);
   }
 
   return (
@@ -40,28 +47,13 @@ function Comment(props) {
 }
 
 function App() {
-  const [commentData, setCommentData] = useState({
-    name : '로건',
-    comment : '테스트 코멘트',
-    countOfLike : 5,
-    createdAt : '2020-05-17T12:20:00'
-  });
-
-  function changeCountOfLike() {
-    setCommentData({
-      ...commentData,
-      isLike: !commentData.isLike,
-      countOfLike: !commentData.isLike ? commentData.countOfLike+1 : commentData.countOfLike-1
-    });
-  }
-  
   return (
     <div className="App">
       <header className="App-header">
           This is for comment
       </header>
       <div className='App-body'>
-        <Comment commentData={commentData} changeCountOfLike={changeCountOfLike}>
+        <Comment commentData={commentData}>
           <div className='icon'>
             <img src={icon} alt='icon' />
           </div>
