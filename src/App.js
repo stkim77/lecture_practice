@@ -5,10 +5,12 @@ import './App.css';
 const getDateDiffFromNow = (from) => {
   const fromDate = new Date(from);
   const nowDate = new Date();
-  const diffSecond = (nowDate.getTime() - fromDate.getTime()) / 1000;
-  const displayMinute = Math.ceil(diffSecond / 60);
-  const displaySecond = Math.ceil(diffSecond % 60);
-  return `${displayMinute}분 ${displaySecond}초`;
+  const diffTime = (nowDate.getTime() - fromDate.getTime()) / 1000;
+  const diffSecond = Math.floor(diffTime % 60);
+  const diffMinute = Math.floor((diffTime / 60) % 60);
+  const diffHour = Math.floor((diffTime / 60 / 60) % 24);
+  const diffDay = Math.floor(diffTime / 60 / 60 / 24);
+  return diffDay>0 ? `${diffDay}일` : `${diffHour}시간 ${diffMinute}분 ${diffSecond}초`;
 }
 
 class Comment extends React.Component {
@@ -82,7 +84,7 @@ class App extends React.Component {
           comment : '테스트 코멘트1111',
           isLike : false,
           countOfLike : 3,
-          createdAt : '2020-05-17T18:10:00'    
+          createdAt : '2020-06-10T16:10:00'    
         },
         {
           id : 2,
@@ -90,7 +92,7 @@ class App extends React.Component {
           comment : '테스트 코멘트2222',
           isLike : false,
           countOfLike : 4,
-          createdAt : '2020-05-17T18:15:00'    
+          createdAt : '2020-06-20T14:15:00'    
         },
         {
           id : 3,
@@ -98,7 +100,7 @@ class App extends React.Component {
           comment : '테스트 코멘트3333',
           isLike : false,
           countOfLike : 5,
-          createdAt : '2020-05-17T18:20:00'    
+          createdAt : '2020-06-20T14:20:00'    
         },
       ]
     };
@@ -137,8 +139,8 @@ class App extends React.Component {
             commentData.map((data)=>{
               return (
                 <Comment key={data.id} commentData={data} changeCountOfLike={this.changeCountOfLike}>
-                  <div className='icon'>
-                    <img src={icon} alt='icon' />
+                  <div className='logo'>
+                    <img src={icon} alt='logo' />
                   </div>
                 </Comment>    
               );

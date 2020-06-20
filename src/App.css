@@ -31,6 +31,16 @@
   border: 1px solid;
 }
 
+.comment_container .logo {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+.comment_container .logo img {
+  width: 30px;
+}
+
 .comment_container .icon {
   display: flex;
   align-items: center;
